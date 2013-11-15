@@ -18,7 +18,7 @@ function getInvoices(){
 					$line['Quantity']=$row[5][$j];
 					$line['UnitPrice']=$row[6][$j];
 					$line['CreditAmount']=$row[7][$j];
-					//echo "SUUU####>".$row[8][$j]."<#####";
+					
 					
 					$query = 'SELECT tax.TaxType, tax.TaxPercentage FROM tax WHERE tax.TaxID ='.$row[8][$j];
 					$taxes_t = $db->query($query)->fetchALL();
@@ -52,4 +52,14 @@ function getInvoices(){
 				//return json_encode($invoices);
 				return ($invoices);
 		}
+
+function getCompanyName($customerid){
+	$db = new PDO('sqlite:../data/database.db');
+	$query = 'SELECT cliente.CompanyName FROM cliente WHERE cliente.CustomerID = '.$customerid;
+	$rows = $db->query($query);
+	
+	foreach($rows as $row) {
+		return $row['CompanyName'];
+	}
+	}
 ?>

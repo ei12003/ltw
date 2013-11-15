@@ -41,11 +41,15 @@ foreach($rows as $row){
 		preg_match("#([0-9]+)#","123123",$m0);
 		print_r($m0);*/
 		 include 'getInvoices.php';
-		print_r( getInvoices());
+		//print_r( getInvoices());
 				
-		
-			//	print_r($invoices[0]);
-			
+				$db = new PDO('sqlite:../data/database.db');
+				$query = 'SELECT * FROM fatura'
+				$rows = $db->query($query);
+				
+				foreach($rows as $row) {
+					print_r($row);
+				}
 
 ?>
 	
