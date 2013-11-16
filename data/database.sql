@@ -110,9 +110,9 @@ INSERT INTO produto VALUES('14','produto14','314.5','meter');
 INSERT INTO produto VALUES('15','produto15','315.5','meter');
 INSERT INTO produto VALUES('16','produto16','316.5','meter');
 INSERT INTO produto VALUES('17','produto17','317.5','meter');
-INSERT INTO produto VALUES('18','produto18','318.5','meter');
-INSERT INTO produto VALUES('19','produto19','319.5','meter');
-INSERT INTO produto VALUES('20','produto20','320.5','meter');
+INSERT INTO produto VALUES('18','produto18','320.5','meter');
+INSERT INTO produto VALUES('19','produto19','320.5','meter');
+INSERT INTO produto VALUES('20','produto20','302.5','meter');
 
 
 
