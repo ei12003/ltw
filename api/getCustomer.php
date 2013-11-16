@@ -22,6 +22,11 @@ if(!empty($value)){
 	}
 
 
+$error = array('error' => array('code' => 404, 'reason' => 'Customer not found.'));
+
+if(empty($customer))
+	echo json_encode($error);
+else
 	echo json_encode($customer);
 }
 ?>

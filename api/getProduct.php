@@ -19,6 +19,11 @@ if(!empty($value)){
 	}
 
 
+$error = array('error' => array('code' => 404, 'reason' => 'Product not found.'));
+
+if(empty($product))
+	echo json_encode($error);
+else
 	echo json_encode($product);
 }
 ?>
