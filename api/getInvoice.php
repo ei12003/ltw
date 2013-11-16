@@ -4,7 +4,7 @@ header('Content-Type:application/json');
 $value = str_replace("\"","",$_GET['InvoiceNo']);
 
 $db = new PDO('sqlite:../data/database.db');
-$query = 'SELECT DISTINCT fatura.InvoiceNo, fatura.InvoiceDate, fatura.CustomerID, group_concat(line.LineNumber), group_concat(line.ProductCode), group_concat(line.Quantity), group_concat(produto.UnitPrice), group_concat(line.CreditAmount),group_concat(line.TaxID), fatura.TaxPayable, fatura.NetTotal, fatura.GrossTotal FROM fatura INNER JOIN line INNER JOIN produto WHERE produto.ProductCode = line.productCode AND fatura.LineID = line.LineID AND fatura.InvoiceNo = \''.$value.'\' GROUP by fatura.InvoiceNo';
+$query = 'SELECT DISTINCT fatura.InvoiceNo, fatura.InvoiceDate, fatura.CustomerID, group_concat(line.LineNumber), group_concat(line.ProductCode), group_concat(line.Quantity), group_concat(produto.UnitPrice), group_concat(line.CreditAmount),group_concat(line.TaxID), fatura.TaxPayable, fatura.NetTotal, fatura.GrossTotal, cliente.CompanyName FROM fatura INNER JOIN line INNER JOIN produto WHERE produto.ProductCode = line.productCode AND fatura.LineID = line.LineID AND fatura.InvoiceNo = \''.$value.'\' GROUP by fatura.InvoiceNo';
 //echo $query;
 $row = $db->query($query)->fetchAll();
 $row = $row[0];
