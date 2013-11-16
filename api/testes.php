@@ -40,7 +40,7 @@ foreach($rows as $row){
 	print_r($oi);
 		preg_match("#([0-9]+)#","123123",$m0);
 		print_r($m0);*/
-		 include 'getInvoices.php';
+		 /*include 'getInvoices.php';
 		//print_r( getInvoices());
 				
 				$db = new PDO('sqlite:../data/database.db');
@@ -49,7 +49,8 @@ foreach($rows as $row){
 				
 				foreach($rows as $row) {
 					print_r($row);
-				}
+				}*/
+					echo $_GET['in'];
 
 ?>
 	
