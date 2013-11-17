@@ -11,11 +11,12 @@ include 'getFormattedInvoices.php';
 $op = str_replace("\"","",$_GET['op']);
 $field = str_replace("\"","",$_GET['field']);
 
-if(isset($_GET['value']))
+if(isset($_GET['value'])){
 	$value = $_GET['value'];	
 
 if(!is_string($value) && $op!="range")
 	$value = $value[0];
+}
 		
 $error = 0;
 $list = array(); //VER SE DA PARA TIRAR
