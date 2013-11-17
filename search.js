@@ -17,7 +17,7 @@ $(document).ready(function() {
 	//PRODUCTS
 	$field_pc='<input type="radio" id="r12" name="fields" value="ProductCode"><label for="r12">ProductCode</label>';
 	$field_pd='<input type="radio" id="r13" name="fields" value="ProductDescription"><label for="r13">ProductDescription</label>';
-	$field_up='<input type="radio" id="r14" name="fields" value="unitPrice"><label for="r14">UnitPrice</label><br>';
+	$field_up='<input type="radio" id="r14" name="fields" value="unitPrice"><label for="r14">UnitPrice</label>';
 	$field_end='</form>';
 	$op = '';
 	
@@ -49,7 +49,7 @@ $(document).ready(function() {
 				$rb_searchtype.filter(":checked").val()=='searchCustomersByField' || 
 				$rb_searchtype.filter(":checked").val()=='searchProductsByField'){
 			
-			$content.append('<form action="" id="op"><input type="radio" id="r7" name="operators" value="range"><label for="r7">Range</label><input type="radio" id="r8" name="operators" value="equal"><label for="r8">Equal</label><input type="radio" id="r9" name="operators" value="contains"><label for="r9">Contains</label><br><input type="radio" id="r10" name="operators" value="min"><label for="r10">Min</label><input type="radio" id="r11" name="operators" value="max"><label for="r11">Max</label><hr noshade size=1 width="33%"><form>');
+			$content.append('<form action="" id="op"><input type="radio" id="r7" name="operators" value="range"><label for="r7">Range</label><input type="radio" id="r8" name="operators" value="equal"><label for="r8">Equal</label><input type="radio" id="r9" name="operators" value="contains"><label for="r9">Contains</label><input type="radio" id="r10" name="operators" value="min"><label for="r10">Min</label><input type="radio" id="r11" name="operators" value="max"><label for="r11">Max</label><hr noshade size=1 width="33%"><form>');
 			$rb_operator=$("input[name='operators']");
 			//CHANGE OPERATOR
 			$rb_operator.change(function() {
@@ -122,7 +122,7 @@ $(document).ready(function() {
 					}
 					else if($op=='range'){
 						$content.append('<input type="text" name="user_search" size="50" />');
-						$content.append('<input type="text" name="user_search2" size="50" /><br>');
+						$content.append('<input type="text" name="user_search2" size="50" />');
 						$input2 = $("input[name='user_search2']");
 						$input = $('input[name="user_search"]');
 						$input.on("keyup",get_rangedJson);
