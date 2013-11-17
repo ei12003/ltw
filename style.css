@@ -35,6 +35,7 @@ li{
 #menu {
 background-color:black;
 color:white;
+margin-bottom: 10px;
 }
 #menu a{
       text-decoration:none;
@@ -42,62 +43,93 @@ color:white;
 	  text-weight:none;
 	  }
 
-#conteudo{
-margin-left:10px;
-}
-#conteudo h3{
-font-size:30px;
-font-weight:bolder;
-margin-top:10px;
-margin-bottom:10px;
+input[type=radio] {
+    display:none;
+    margin:10px;
 }
 
-#conteudo .noticia{
-border-style:solid;
-border-width:0px;
-border-bottom-width:1px;
-margin-right:10px;
+input[type=radio] + label {
+    display:inline-block;
+    margin:5px;
+    padding: 4px 10px;
+    background-color: #e7e7e7;
+    box-shadow: 2px 2px 1px #888888;
 }
 
-#conteudo .noticia img{
-float:left;
-margin-right:10px;
-margin-bottom:10px;
+input[type=radio]:checked + label {
+   background-image: none;
+   background-color:#c0c0c0;
 }
-#conteudo .noticia .introducao {
-font-style:italic
-}
-#conteudo .noticia a {
+
+#conteudo .open_invoice a {
 text-decoration:none;
-}
-#conteudo li{
-border-style:solid;
-border-width:1px;
-}
+}		
 
-#conteudo li{
-background-color:#666666;
-border-style:solid;
-border-width:1px;
-padding:2px;
-padding-right:4px;
+table { 
+  color: #000000;
+  font-family:  calibri;
+  border-collapse:separate;
+  border:solid black 1px;
+  border-radius:6px;
+  -moz-border-radius:6px;
+	
 }
-#conteudo li a{
+		
+td,th { 
+border: 0 none;
+border-bottom:1pt solid black;
+height: 18px;
+padding: 5px 10px;
+}
+#conteudo table{
+margin: auto;
+margin-top: 1%;
+}
+#conteudo .open_invoice a {
 text-decoration:none;
- color:white;
- text-weight:none;
+color:black;
+text-weight:none;
+}		
+
+a[href], label[for],button .pointer {
+       cursor: pointer;
+}
+th {
+    color: #FFF; font-weight: bold;
+    height: 25px;
+    text-align: left;
+    font-size: 15px;
+    font-color: #FFF;
+    padding-left:20px;
+    font-style: italic;
+
+}
+		
+td {
+background: #FAFAFA;
+text-align: center;
+padding: 5px 10px;
 }
 
-#conteudo li:before{
-content:"";
+tr td table{
+
+	 margin: 0;
+
 }
+
+tr td:first-child{ 
+	background: none; 
+	font-style: italic;
+        border-right:1pt solid black;
+	font-weight: bold;
+	font-size: 14px;
+	text-align: center;
+	 margin: 0;
+	
+padding: 5px 10px;
+}
+
+
 #rodape{
 margin-left:10px;
 }
-
-
-
-
-
-
-

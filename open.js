@@ -26,10 +26,32 @@ $(document).ready(function() {
 					//$.each(data[i], function(i, doc){ $gt = doc.GrossTotal });
 					$invno = '<tr><td>InvoiceNo</td><td>' + data[i].InvoiceNo + '</td></tr>';
 					$invdate = '<tr><td>InvoiceDate</td><td>' + data[i].InvoiceDate + '</td></tr>';
+					$cid = '<tr><td>CustomerID</td><td>' + data[i].CustomerID  + '</td></tr>';
 					$cmpname = '<tr><td>CompanyName</td><td>' + data[i].CompanyName  + '</td></tr>';
-					$grosstotal = '<tr><td>GrossTotal</td><td>' + data[i].DocumentTotals.GrossTotal + '</td></tr>';
-					$json = '<div id="sums"><table border="1">'+$invno+$invdate+$cmpname+$grosstotal+'</table></div>';
+					$line = '<tr><td colspan=2>Line</td></tr>';
+					$.each(data[i].Line, function(i, item) {
+						$line += '<tr><td>Linenumber '+item.LineNumber+'</td><td><table border="2" >';
+						$line += '<tr><td>ProductCode</td><td>'+item.ProductCode+'</td></tr>';
+						$line += '<tr><td>Quantity</td><td>'+item.Quantity+'</td></tr>';
+						$line += '<tr><td>CreditAmount</td><td>'+item.CreditAmount+'</td></tr>';
+						
+						$.each(item.Tax, function(i, item) {
+						$line += '<tr><td colspan=2>Tax</td></tr>';
+						$line += '<tr><td>TaxType</td><td>'+item.TaxType+'</td></tr>';
+						$line += '<tr><td>TaxPercentage</td><td>'+item.TaxPercentage+'</td></tr>';							
+						});
+						$line += '</table></td></tr>';
+				
+						
+
+					});
+					$dt = '<tr><td>Document Totals</td><td><table border="2" >';
+					$dt += '<tr><td>TaxPayable</td><td>' + data[i].DocumentTotals.TaxPayable + '</td></tr>';
+					$dt += '<tr><td>NetTotal</td><td>' + data[i].DocumentTotals.NetTotal + '</td></tr>';
+					$dt += '<tr><td>GrossTotal</td><td>' + data[i].DocumentTotals.GrossTotal + '</td></tr></table></td></tr>';
+					$json = '<div id="sums"><table border="1">'+$invno+$invdate+$cid+$cmpname+$line+$dt+'</table></div>';
 					$content.append($json);
+					
 					
 				}	
 			}
@@ -38,13 +60,17 @@ $(document).ready(function() {
 					$cid = '<tr><td>CustomerID</td><td>' + data.CustomerID + '</td></tr>';
 					$ctaxid = '<tr><td>CustomerTaxID </td><td>' + data.CustomerTaxID  + '</td></tr>';
 					$cmpname = '<tr><td>CompanyName</td><td>' + data.CompanyName  + '</td></tr>';
-						
-					$ad = '<tr><td>AddressDetail</td><td>' + data.BillingAddress.AddressDetail  + '</td></tr>';
-					$ci = '<tr><td>City</td><td>' + data.BillingAddress.Cidade  + '</td></tr>';
-					$pc = '<tr><td>PostalCode</td><td>' + data.BillingAddress.PostalCode  + '</td></tr>';
-					$countc = '<tr><td>Country</td><td>' + data.BillingAddress.Country  + '</td></tr>';
+					
+					$ba  = '<tr><td>Billing Address</td><td><table border="2" >';
+					$ba += '<tr><td>AddressDetail</td><td>' + data.BillingAddress.AddressDetail  + '</td></tr>';
+					$ba += '<tr><td>City</td><td>' + data.BillingAddress.Cidade  + '</td></tr>';
+					$ba += '<tr><td>PostalCode</td><td>' + data.BillingAddress.PostalCode  + '</td></tr>';
+					$ba += '<tr><td>Country</td><td>' + data.BillingAddress.Country  + '</td></tr></table></td></tr>';
+					
+					
+					
 					$email = '<tr><td>Email</td><td>' + data.Email  + '</td></tr>';
-					$json = '<div id="sums"><table border="1">'+$cid+$ctaxid+$cmpname+$ad+$ci+$pc+$countc+$email+'</table></div>';
+					$json = '<div id="sums"><table border="1">'+$cid+$ctaxid+$cmpname+$ba+$email+'</table></div>';
 					$content.append($json);
 					
 				}

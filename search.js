@@ -6,20 +6,22 @@ $(document).ready(function() {
 	$input = $('input[name="user_search"]');
 	$field_header='<form action="" id="field">';
 	//INVOICES
-	$field_invno='<input type="radio" name="fields" value="InvoiceNo">InvoiceNo<br>';
-	$field_invdate='<input type="radio" name="fields" value="InvoiceDate">InvoiceDate<br>';
-	$field_invcmpname='<input type="radio" name="fields" value="CompanyName">CompanyName <br>';
-	$field_invgt='<input type="radio" name="fields" value="GrossTotal">GrossTotal<br>';
+	$field_invno='<input type="radio" id="r12" name="fields" value="InvoiceNo"><label for="r12">InvoiceNo</label>';
+	$field_invdate='<input type="radio" id="r13" name="fields" value="InvoiceDate"><label for="r13">InvoiceDate</label>';
+	$field_invcmpname='<input type="radio" id="r14" name="fields" value="CompanyName"><label for="r14">CompanyName</label>';
+	$field_invgt='<input type="radio" id="r15" name="fields" value="GrossTotal"><label for="r15">GrossTotal</label>';
 	//CUSTOMERS
-	$field_cid='<input type="radio" name="fields" value="CustomerID">CustomerID<br>';
-	$field_ctaxid='<input type="radio" name="fields" value="CustomerTaxID ">CustomerTaxID <br>';
-	$field_invcmpname='<input type="radio" name="fields" value="CompanyName">CompanyName <br>';
+	$field_cid='<input type="radio" id="r12" name="fields" value="CustomerID"><label for="r12">CustomerID</label>';
+	$field_ctaxid='<input type="radio" id="r13" name="fields" value="CustomerTaxID"><label for="r13">CustomerTaxID</label>';
+	$field_invcmpname='<input type="radio" id="r14" name="fields" value="CompanyName"><label for="r14">CompanyName</label>';
 	//PRODUCTS
-	$field_pc='<input type="radio" name="fields" value="ProductCode">ProductCode<br>';
-	$field_pd='<input type="radio" name="fields" value="ProductDescription ">ProductDescription<br>';
-	$field_up='<input type="radio" name="fields" value="unitPrice">UnitPrice <br>';
-	$field_end='</form>';
+	$field_pc='<input type="radio" id="r12" name="fields" value="ProductCode"><label for="r12">ProductCode</label>';
+	$field_pd='<input type="radio" id="r13" name="fields" value="ProductDescription "><label for="r13">ProductDescription</label>';
+	$field_up='<input type="radio" id="r14" name="fields" value="unitPrice"><label for="r14">UnitPrice</label><br>';
+	$field_end='<p></form>';
 	$op = '';
+	
+
 	
 	
 	$rb_searchtype.change(function() {
@@ -39,7 +41,7 @@ $(document).ready(function() {
 				$rb_searchtype.filter(":checked").val()=='searchCustomersByField' || 
 				$rb_searchtype.filter(":checked").val()=='searchProductsByField'){
 			
-			$content.append('<form action="" id="op"><input type="radio" name="operators" value="range">Range<br><input type="radio" name="operators" value="equal">Equal<br><input type="radio" name="operators" value="contains">Contains<br><input type="radio" name="operators" value="min">Min<br><input type="radio" name="operators" value="max">Max<br></form>');
+			$content.append('<form action="" id="op"><input type="radio" id="r7" name="operators" value="range"><label for="r7">Range</label><input type="radio" id="r8" name="operators" value="equal"><label for="r8">Equal</label><input type="radio" id="r9" name="operators" value="contains"><label for="r9">Contains</label><br><input type="radio" id="r10" name="operators" value="min"><label for="r10">Min</label><input type="radio" id="r11" name="operators" value="max"><label for="r11">Max</label><p><hr noshade size=1 width="33%"><p><form>');
 			$rb_operator=$("input[name='operators']");
 			//CHANGE OPERATOR
 			$rb_operator.change(function() {
@@ -64,6 +66,7 @@ $(document).ready(function() {
 				{
 					if($op=='contains' || $op=='equal'){
 						$content.append($field_header+$field_cid+$field_ctaxid+$field_invcmpname+$field_end);
+						
 					}
 					else if($op=='range' || $op=='min' || $op=='max'){
 						$content.append($field_header+$field_cid+$field_ctaxid+$field_end);
@@ -73,14 +76,16 @@ $(document).ready(function() {
 				{
 					if($op=='contains' || $op=='equal'){
 						$content.append($field_header+$field_pc+$field_pd+$field_up+$field_end);
+							
 					}
 					else if($op=='range' || $op=='min' || $op=='max'){
 						$content.append($field_header+$field_pc+$field_up+$field_end);
+						
 					}
 				}
 				
 				$rb_fields=$("input[name='fields']");
-				
+				//CHANGE FIELDS
 				$rb_fields.change(function() {
 					$('input[name="user_search2"]').remove();
 					$('input[name="user_search"]').remove();
@@ -101,12 +106,14 @@ $(document).ready(function() {
 						});
 					}
 					else if($op=='min' || $op=='max'){
+						
 						$get = { op: $op, field: $field};
 						getJSON();
+					
 					}
 					else if($op=='range'){
 						$content.append('<input type="text" name="user_search" size="50" />');
-						$content.append('<input type="text" name="user_search2" size="50" />');
+						$content.append('<input type="text" name="user_search2" size="50" /><br>');
 						$input2 = $("input[name='user_search2']");
 						$input = $('input[name="user_search"]');
 						$input.on("keyup",get_rangedJson);
@@ -163,7 +170,7 @@ $(document).ready(function() {
 									$invdate = '<tr><td>InvoiceDate</td><td>' + data[i].InvoiceDate + '</td></tr>';
 									$cmpname = '<tr><td>CompanyName</td><td>' + data[i].CompanyName  + '</td></tr>';
 									$grosstotal = '<tr><td>GrossTotal</td><td>' + $gt + '</td></tr>';
-									$json = '<div id="sums"><table border="1"><td colspan="2"><div class="open_invoice"><a href="">Abrir</a></div></td>'+$invno+$invdate+$cmpname+$grosstotal+'</table></div>';
+									$json = '<div id="sums"><table border="1"><th colspan="2"><div class="open_invoice"><a href="">Abrir</a></div></th>'+$invno+$invdate+$cmpname+$grosstotal+'</table></div>';
 									$content.append($json);
 									$(".open_invoice a[href=\"\"]").prop("href", "open.php?type=fatura&id="+data.InvoiceNo);
 								}	
@@ -177,7 +184,7 @@ $(document).ready(function() {
 									$cid = '<tr><td>CustomerID</td><td>' + data.CustomerID + '</td></tr>';
 									$ctaxid = '<tr><td>CustomerTaxID </td><td>' + data.CustomerTaxID  + '</td></tr>';
 									$cmpname = '<tr><td>CompanyName</td><td>' + data.CompanyName  + '</td></tr>';
-									$json = '<div id="sums"><table border="1"><td colspan="2"><div class="open_invoice"><a href="">Abrir</a></div></td>'+$cid+$ctaxid+$cmpname+'</table></div>';
+									$json = '<div id="sums"><table border="1"><th colspan="2"><div class="open_invoice"><a href="">Abrir</a></div></th>'+$cid+$ctaxid+$cmpname+'</table></div>';
 									$content.append($json);
 									$(".open_invoice a[href=\"\"]").prop("href", "open.php?type=cliente&id="+data.CustomerID);
 								}
@@ -191,7 +198,7 @@ $(document).ready(function() {
 									$pc = '<tr><td>ProductCode</td><td>' + data.ProductCode + '</td></tr>';
 									$pd = '<tr><td>ProductDescription  </td><td>' + data.ProductDescription   + '</td></tr>';
 									$up = '<tr><td>UnitPrice</td><td>' + data.unitPrice  + '</td></tr>';
-									$json = '<div id="sums"><table border="1"><td colspan="2"><div class="open_invoice"><a href="">Abrir</a></div></td>'+$pc+$pd+$up+'</table></div>';
+									$json = '<div id="sums"><table border="1"><th colspan="2"><div class="open_invoice"><a href="">Abrir</a></div></th>'+$pc+$pd+$up+'</table></div>';
 									$content.append($json);
 									$(".open_invoice a[href=\"\"]").prop("href", "open.php?type=produto&id="+data.ProductCode);
 								}
@@ -221,6 +228,7 @@ $(document).ready(function() {
 function getJSON(){
 	$.getJSON($option,$get, function(data) {
 									$('div#sums').remove();
+									
 									$.each(data, function(i, item) {
 										if(data[i].hasOwnProperty('InvoiceNo')){
 											$.each(data[i], function(i, doc){ $gt = doc.GrossTotal });
@@ -228,15 +236,16 @@ function getJSON(){
 											$invdate = '<tr><td>InvoiceDate</td><td>' + data[i].InvoiceDate + '</td></tr>';
 											$cmpname = '<tr><td>CompanyName</td><td>' + data[i].CompanyName  + '</td></tr>';
 											$grosstotal = '<tr><td>GrossTotal</td><td>' + $gt + '</td></tr>';
-											$json = '<div id="sums"><table border="1"><td colspan="2"><div class="open_invoice"><a href="">Abrir</a></div></td>'+$invno+$invdate+$cmpname+$grosstotal+'</table></div>';
+											$json = '<div id="sums"><table border="1"><th colspan="2"><div class="open_invoice"><a href="">Abrir</a></div></th>'+$invno+$invdate+$cmpname+$grosstotal+'</table></div>';
 											$content.append($json);
 											$(".open_invoice a[href=\"\"]").prop("href", "open.php?type=fatura&id="+data[i].InvoiceNo);
 										}
 										else if(data[i].hasOwnProperty('CustomerID')){
+											
 											$cid = '<tr><td>CustomerID</td><td>' + data[i].CustomerID + '</td></tr>';
 											$ctaxid = '<tr><td>CustomerTaxID </td><td>' + data[i].CustomerTaxID  + '</td></tr>';
 											$cmpname = '<tr><td>CompanyName</td><td>' + data[i].CompanyName  + '</td></tr>';
-											$json = '<div id="sums"><table border="1"><td colspan="2"><div class="open_invoice"><a href="">Abrir</a></div></td>'+$cid+$ctaxid+$cmpname+'</table></div>';									
+											$json = '<div id="sums"><table border="1"><th colspan="2"><div class="open_invoice"><a href="">Abrir</a></div></th>'+$cid+$ctaxid+$cmpname+'</table></div>';									
 											$content.append($json);
 											$(".open_invoice a[href=\"\"]").prop("href", "open.php?type=cliente&id="+data[i].CustomerID);
 										}
@@ -244,9 +253,9 @@ function getJSON(){
 											$pc = '<tr><td>ProductCode</td><td>' + data[i].ProductCode + '</td></tr>';
 											$pd = '<tr><td>ProductDescription  </td><td>' + data[i].ProductDescription   + '</td></tr>';
 											$up = '<tr><td>UnitPrice</td><td>' + data[i].unitPrice  + '</td></tr>';
-											$json = '<div id="sums"><table border="1"><td colspan="2"><div class="open_invoice"><a href="">Abrir</a></div></td>'+$pc+$pd+$up+'</table></div>';
+											$json = '<div id="sums"><table border="1"><th colspan="2"><div class="open_invoice"><a href="">Abrir</a></div></th>'+$pc+$pd+$up+'</table></div>';
 											$content.append($json);
-											$(".open_invoice a[href=\"\"]").prop("href", "open.php?type=produto&id="+data.ProductCode);
+											$(".open_invoice a[href=\"\"]").prop("href", "open.php?type=produto&id="+data[i].ProductCode);
 										}
 										$(".open_invoice a[href=\"\"]").prop("href", "open.php");
 										
