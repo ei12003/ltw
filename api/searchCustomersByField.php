@@ -7,9 +7,13 @@ $db = new PDO('sqlite:../data/database.db');
 $op = str_replace("\"","",$_GET['op']);
 $field = str_replace("\"","",$_GET['field']);
 
-if(isset($_GET['value']))
+if(isset($_GET['value'])){
 	$value = $_GET['value'];	
-
+	
+}
+if(!is_string($value) && $op!="range")
+	$value = $value[0];
+		
 $error = 0;
 $list = array(); //VER SE DA PARA TIRAR
 
@@ -49,6 +53,8 @@ if(!empty($op) && !empty($field)){
 	// EQUAL OPERATION
 	else if($op == "equal")
 	{
+		
+		
 		// http://localhost/ltw/api/searchCustomersByField.php?op=equal&field=CustomerID&value=5
 		if(strcmp($field,"CustomerID")==0){
 			$query = 'SELECT CustomerID, CustomerTaxID, CompanyName FROM cliente WHERE CustomerID = '.$value;

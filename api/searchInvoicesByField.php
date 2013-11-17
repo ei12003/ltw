@@ -14,6 +14,9 @@ $field = str_replace("\"","",$_GET['field']);
 if(isset($_GET['value']))
 	$value = $_GET['value'];	
 
+if(!is_string($value) && $op!="range")
+	$value = $value[0];
+		
 $error = 0;
 $list = array(); //VER SE DA PARA TIRAR
 $query = 'SELECT DISTINCT fatura.InvoiceNo, fatura.InvoiceDate, fatura.CustomerID, group_concat(line.LineNumber),  group_concat(line.ProductCode), 	group_concat(line.Quantity), group_concat(produto.UnitPrice), group_concat(line.CreditAmount), group_concat(line.TaxID), fatura.TaxPayable, fatura.NetTotal, fatura.GrossTotal, cliente.CompanyName FROM fatura INNER JOIN line INNER JOIN produto INNER JOIN cliente WHERE cliente.CustomerID = fatura.CustomerID AND produto.ProductCode = line.productCode AND fatura.LineID = line.LineID';
@@ -79,6 +82,9 @@ if(!empty($op) && !empty($field)){
 	// EQUAL OPERATION
 	else if($op == "equal")
 	{
+		if(!is_string($value)){
+			$value = $value[0];
+		}
 		// http://localhost/ltw/api/searchInvoicesByField.php?op=equal&field=InvoiceNo&value=FT%20SEQ/5
 		if(strcmp($field,"InvoiceNo")==0){
 			$list=getFormattedInvoices($query.' AND fatura.InvoiceNo = \''.$value.'\' GROUP by fatura.InvoiceNo');
@@ -107,6 +113,9 @@ if(!empty($op) && !empty($field)){
 	// CONTAINS OPERATION
 	else if($op == "contains")
 	{
+		if(!is_string($value)){
+			$value = $value[0];
+		}
 		// http://localhost/ltw/api/searchInvoicesByField.php?op=contains&field=InvoiceNo&value=FT%20SE
 		if(strcmp($field,"InvoiceNo")==0){
 			$list=getFormattedInvoices($query.' AND fatura.InvoiceNo LIKE \'%'.$value.'%\' GROUP by fatura.InvoiceNo');
@@ -136,6 +145,9 @@ if(!empty($op) && !empty($field)){
 	// MIN OPERATION
 	else if($op == "min")
 		{
+		if(!is_string($value)){
+			$value = $value[0];
+		}
 		// http://localhost/ltw/api/searchInvoicesByField.php?op=min&field=InvoiceNo
 		if(strcmp($field,"InvoiceNo")==0){
 			
