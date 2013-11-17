@@ -6,7 +6,6 @@ $query = 'SELECT DISTINCT fatura.InvoiceNo, fatura.InvoiceDate, fatura.CustomerI
 $value = str_replace("\"","",$_GET['InvoiceNo']);
 $invoice=getFormattedInvoices($query.' AND fatura.InvoiceNo = \''.$value.'\' GROUP by fatura.InvoiceNo');
 
-
 $error = array('error' => array('code' => 404, 'reason' => 'Invoice not found.'));
 
 if(empty($invoice))

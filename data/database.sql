@@ -3,6 +3,7 @@ CustomerID INTEGER,
 CustomerTaxID INTEGER,
 CompanyName VARCHAR,
 AddressDetail VARCHAR,
+Cidade VARCHAR,
 PostalCode INTEGER,
 Country INTEGER,
 Email VARCHAR
@@ -82,15 +83,15 @@ INSERT INTO users VALUES('user2','user2','3');
 INSERT INTO users VALUES('user3','user3','3');
 
 /* CLIENTE */
-INSERT INTO cliente VALUES('1','71','companyname1','address1','4200','351','cl1@gmail.com');
-INSERT INTO cliente VALUES('2','72','companyname2','address2','4200','351','cl2@gmail.com');
-INSERT INTO cliente VALUES('3','73','companyname3','address3','4200','351','cl3@gmail.com');
-INSERT INTO cliente VALUES('4','74','companyname4','address4','4200','351','cl4@gmail.com');
-INSERT INTO cliente VALUES('5','75','companyname5','address5','4200','351','cl5@gmail.com');
-INSERT INTO cliente VALUES('6','76','companyname6','address6','4200','351','cl6@gmail.com');
-INSERT INTO cliente VALUES('7','77','companyname7','address7','4200','351','cl7@gmail.com');
-INSERT INTO cliente VALUES('8','78','companyname8','address8','4200','351','cl8@gmail.com');
-INSERT INTO cliente VALUES('9','79','companyname9','address9','4200','351','cl9@gmail.com');
+INSERT INTO cliente VALUES('1','71','companyname1','address1','porto','4200','351','cl1@gmail.com');
+INSERT INTO cliente VALUES('2','72','companyname2','address2','porto','4200','351','cl2@gmail.com');
+INSERT INTO cliente VALUES('3','73','companyname3','address3','porto','4200','351','cl3@gmail.com');
+INSERT INTO cliente VALUES('4','74','companyname4','address4','porto','4200','351','cl4@gmail.com');
+INSERT INTO cliente VALUES('5','75','companyname5','address5','porto','4200','351','cl5@gmail.com');
+INSERT INTO cliente VALUES('6','76','companyname6','address6','porto','4200','351','cl6@gmail.com');
+INSERT INTO cliente VALUES('7','77','companyname7','address7','porto','4200','351','cl7@gmail.com');
+INSERT INTO cliente VALUES('8','78','companyname8','address8','porto','4200','351','cl8@gmail.com');
+INSERT INTO cliente VALUES('9','79','companyname9','address9','porto','4200','351','cl9@gmail.com');
 
 /* PRODUTOS */
 INSERT INTO produto VALUES('1','produto1','31.5','meter');

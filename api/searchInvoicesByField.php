@@ -31,7 +31,7 @@ if(!empty($op) && !empty($field)){
 			$reg = '#([^ ]+ [^/^ ]+/)([0-9]+)#';
 			preg_match($reg,$value[0],$m0);
 			preg_match($reg,$value[1],$m1);
-
+			if(!empty($m0) && !empty($m1)){
 			if( ((strcmp($value[0],$m0[0])==0) && strcmp($value[1],$m1[0])==0)
 					&& ($m0[1] == $m1[1]) )
 			{
@@ -52,7 +52,11 @@ if(!empty($op) && !empty($field)){
 				$error = 2;
 			}
 			
-			
+			}
+			else{
+				echo "Error: Invalid Value";
+				$error = 2;
+			}
 		}
 		
 		// http://localhost/ltw/api/searchInvoicesByField.php?op=range&field=%22InvoiceDate%22&value[]=%222013-09-23%22&value[]=%222013-09-30%22
