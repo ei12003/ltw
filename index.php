@@ -4,7 +4,7 @@
 		<title>Sistema de Faturação Online </title>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="style.css">
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
 		<script type="text/javascript" src="search.js"></script>
 	</head>
 	<body>
@@ -16,6 +16,7 @@
 				<li><a href="index.php">Search</a></li>
 			</ul>
 		</div>
+		
 		<div id="conteudo" align="center">
 		
 		<form action="" id="typeOfSearch">
@@ -28,28 +29,19 @@
 			<input type="radio" id="r6" name="search_type" value="getCustomer"><label for="r6">Get Customer</label>
 		</form>
 		    
-			<p><hr noshade size=1 width="33%"><p>
+			<hr noshade size=1 width="33%">
 			
-	
-		<!--
-		<form action="" id="op">
-		<input type="radio" name="operators" value="range">Range<br>
-		<input type="radio" name="operators" value="equal">Equal<br>
-		<input type="radio" name="operators" value="contains">Contains<br>
-		<input type="radio" name="operators" value="min">Min<br>
-		<input type="radio" name="operators" value="max">Max<br>
-		</form>
-		-->
-		
-
-		
-	
-		
-		
-		
-		
 		
 		</div>
+		
+		
+		<div class="pages" align="center">
+			<ul class="nav">
+				<li class="b">Back</li>
+				<li class="n">Next</li>
+			</ul>
+		</div>
+		
 		<div id="rodape">
 			<p>Sistema de Faturação Online</p>
 		</div>

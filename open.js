@@ -23,6 +23,7 @@ $(document).ready(function() {
 				if(data[i].hasOwnProperty('InvoiceNo'))
 				{
 					//TIRAR ISTO DOS OUTROS
+					
 					//$.each(data[i], function(i, doc){ $gt = doc.GrossTotal });
 					$invno = '<tr><td>InvoiceNo</td><td>' + data[i].InvoiceNo + '</td></tr>';
 					$invdate = '<tr><td>InvoiceDate</td><td>' + data[i].InvoiceDate + '</td></tr>';
@@ -30,7 +31,9 @@ $(document).ready(function() {
 					$cmpname = '<tr><td>CompanyName</td><td>' + data[i].CompanyName  + '</td></tr>';
 					$line = '<tr><td colspan=2>Line</td></tr>';
 					$.each(data[i].Line, function(i, item) {
-						$line += '<tr><td>Linenumber '+item.LineNumber+'</td><td><table border="2" >';
+						
+						
+						$line += '<tr><td>Linenumber '+item.LineNumber+'</td><td><table border="2" id="tb">';
 						$line += '<tr><td>ProductCode</td><td>'+item.ProductCode+'</td></tr>';
 						$line += '<tr><td>Quantity</td><td>'+item.Quantity+'</td></tr>';
 						$line += '<tr><td>CreditAmount</td><td>'+item.CreditAmount+'</td></tr>';
@@ -84,17 +87,24 @@ $(document).ready(function() {
 					$json = '<div id="sums"><table border="1">'+$pc+$pd+$up+$ud+'</table></div>';
 					$content.append($json);
 					
+					
+					
 				}
 			}
 			
-			
-			
+						
 		});
-		
-		
+				
+			$print_html='<div class="pages" align="center"><ul class="nav"><li class="b">Print</li></div>';
+	$('div#print').append($print_html);
+	$('.pages ul li').click(function() {
+		window.print();
+	});
 	});
 	
 
+	
+	
 	
 });	
 

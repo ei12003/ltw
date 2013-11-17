@@ -51,12 +51,19 @@ CREATE TABLE users(
 INSERT INTO line VALUES('4','1','1','10','3000','1337');
 INSERT INTO line VALUES('4','2','2','10','3000','1337');
 INSERT INTO line VALUES('4','3','3','10','3000','1337');
+INSERT INTO line VALUES('4','4','4','10','3000','1337');
+INSERT INTO line VALUES('4','5','5','10','3000','1337');
+INSERT INTO line VALUES('4','6','6','10','3000','1337');
+INSERT INTO line VALUES('4','7','7','10','3000','1337');
+INSERT INTO line VALUES('4','8','8','10','3000','1337');
+INSERT INTO line VALUES('4','9','9','10','3000','1337');
+INSERT INTO line VALUES('5','1','1','10','3000','1337');
+INSERT INTO line VALUES('5','2','2','10','3000','1337');
+INSERT INTO line VALUES('5','3','3','10','3000','1337');
 INSERT INTO line VALUES('5','4','4','10','3000','1337');
 INSERT INTO line VALUES('5','5','5','10','3000','1337');
-INSERT INTO line VALUES('5','6','6','10','3000','1337');
-INSERT INTO line VALUES('5','7','7','10','3000','1337');
-INSERT INTO line VALUES('5','8','8','10','3000','1337');
-INSERT INTO line VALUES('5','9','9','10','3000','1337');
+
+
 
 /* FATURAS */
 INSERT INTO fatura VALUES('FT SEQ/1','2010-09-27','1','5','690','3000','3695');

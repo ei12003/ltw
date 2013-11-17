@@ -3,7 +3,7 @@
 	<head>
 		<title>Sistema de Faturação Online </title>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="open.css">
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script type="text/javascript" src="open.js"></script>
 	</head>
@@ -21,76 +21,13 @@
 				<li><a href="index.php">Search</a></li>
 			</ul>
 		</div>
+		<div id="print">
+		</div>
 		<div id="conteudo">
-<!--table border=1>	
-<tr><td>CustomerID</td><td>5</td></tr>
-<tr><td>CustomerTaxID </td><td>75</td></tr>
-<TR><TD colspan=2>LINE</TD></TR>
-	<TR><TD> LineNUM <TD>
-    <TABLE BORDER="2" >
-               <TD>2nd Table</TD>
-               <TD>2nd Table</TD>
-               <TR>
-               <TD>2nd Table</TD>
-               <TD>2nd Table</TD>
-               </TR>
-			   <TR>
-               <TD>2nd Table</TD>
-               <TD>2nd Table</TD>
-               </TR>
-			   <TR>
-               <TD>2nd Table</TD>
-               <TD>2nd Table</TD>
-               </TR>
-			   <TR>
-               <TD>2nd Table</TD>
-               <TD>2nd Table</TD>
-               </TR>
-			   <TR>
-               <TD>2nd Table</TD>
-               <TD>2nd Table</TD>
-               </TR>
-               </TABLE>
-
-    </TD></TD></TR>
-	<TR><TD> LineNUM <TD>
-    <TABLE BORDER="2" >
-               <TD>2nd Table</TD>
-               <TD>2nd Table</TD>
-               <TR>
-               <TD>2nd Table</TD>
-               <TD>2nd Table</TD>
-               </TR>
-			   <TR>
-               <TD>2nd Table</TD>
-               <TD>2nd Table</TD>
-               </TR>
-			   <TR>
-               <TD>2nd Table</TD>
-               <TD>2nd Table</TD>
-               </TR>
-			   <TR>
-               <TD>2nd Table</TD>
-               <TD>2nd Table</TD>
-               </TR>
-			   <TR>
-               <TD>2nd Table</TD>
-               <TD>2nd Table</TD>
-               </TR>
-               </TABLE>
-
-    </TD></TD></TR>
-	
-<tr><td>AddressDetail</td><td>address5</td></tr>
-</table-->
 
 
-    <TABLE BORDER="3" >
-    
-    
-    </TABLE> 
-
-
+		</div>
+		<div id="print">
 		</div>
 		<div id="rodape">
 			<p>Sistema de Faturação Online</p>

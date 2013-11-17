@@ -1,3 +1,5 @@
+body {margin:0; padding:0; line-height: 1.4em; word-spacing:1px; letter-spacing:0.2px;}
+
 html{
 	background-color:#ddddff;
 }
@@ -43,36 +45,9 @@ margin-bottom: 10px;
 	  text-weight:none;
 	  }
 
-input[type=radio] {
-    display:none;
-    margin:10px;
-    font: bold 12px/12px HelveticaNeue, Arial;
-}
 
-input[type=radio] + label {
-    display:inline-block;
-    margin:5px;
-    background-color: #e7e7e7;
-    box-shadow: 2px 2px 1px #888888;	
-    font: bold 12px/12px HelveticaNeue, Arial;
-    padding: 8px 11px;
-    color: #444;
-    border: 1px solid #dedede;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-}
-
-input[type=radio]:checked + label {
-   background-image: none;
-   background-color:#c0c0c0;
-}
-
-#conteudo .open_invoice a {
-	text-decoration:none;
-	color:black;
-	text-weight:none;
-}		
+table { page-break-inside:auto }
+tr    { page-break-inside:avoid; page-break-after:auto }
 
 table { 
   color: #000000;
@@ -83,7 +58,6 @@ table {
   -moz-border-radius:6px;
   -webkit-border-radius: 3px;
 }
-		
 
 #conteudo table{
 margin: auto;
@@ -168,6 +142,9 @@ content:"";
 }
 
 
-#rodape{
-margin-left:10px;
+@media print {
+    div#rodape {display: none;}
+	div#cabecalho {display: none;}
+	div#print {display: none;}
+	div#menu {display: none;}
 }
