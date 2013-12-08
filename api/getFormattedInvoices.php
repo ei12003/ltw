@@ -1,5 +1,6 @@
 <?php
 function getFormattedInvoices($query){
+	
 				$db = new PDO('sqlite:../data/database.db');
 				$rows = $db->query($query);
 				$line = array();

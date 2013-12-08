@@ -1,6 +1,4 @@
-<?php
-include_once './header.php'; 
-?>
+﻿<?php include_once './header.php'; ?>
 
 		<div id="conteudo" align="center">
 		

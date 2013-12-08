@@ -1,11 +1,15 @@
 
 <?php
-
-header('Content-Type:application/json');
+function getCustomer($CustomerID){
+//header('Content-Type:application/json');
 $db = new PDO('sqlite:../data/database.db');
 
 
-$value = str_replace("\"","",$_GET['CustomerID']);
+if(isset($_GET['CustomerID']))
+	$value = str_replace("\"","",$_GET['CustomerID']);
+	
+else
+	$value = $CustomerID;
 
 // http://localhost/ltw/api/searchCustomer.php?CustomerID=5
 if(!empty($value)){
@@ -29,8 +33,12 @@ if(!empty($value)){
 $error = array('error' => array('code' => 404, 'reason' => 'Customer not found.'));
 
 if(empty($customer))
-	echo json_encode($error);
+	return json_encode($error);
 else
-	echo json_encode($customer);
+	return json_encode($customer);
 }
+}
+
+if(isset($_GET['CustomerID']))
+	echo getCustomer(null);
 ?>

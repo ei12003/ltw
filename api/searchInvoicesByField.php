@@ -5,9 +5,7 @@ header('Content-Type:application/json');
 
 include 'getFormattedInvoices.php';
 
-/*
- * FALTA ADICIONAR COMPANYNAME AO JSON
-*/
+
 $op = str_replace("\"","",$_GET['op']);
 $field = str_replace("\"","",$_GET['field']);
 
@@ -19,7 +17,7 @@ if(!is_string($value) && $op!="range")
 }
 		
 $error = 0;
-$list = array(); //VER SE DA PARA TIRAR
+$list = array(); 
 $query = 'SELECT DISTINCT fatura.InvoiceNo, fatura.InvoiceDate, fatura.CustomerID, group_concat(line.LineNumber),  group_concat(line.ProductCode), 	group_concat(line.Quantity), group_concat(produto.UnitPrice), group_concat(line.CreditAmount), group_concat(line.TaxID), fatura.TaxPayable, fatura.NetTotal, fatura.GrossTotal, cliente.CompanyName FROM fatura INNER JOIN line INNER JOIN produto INNER JOIN cliente WHERE cliente.CustomerID = fatura.CustomerID AND produto.ProductCode = line.productCode AND fatura.LineID = line.LineID';
 
 if(!empty($op) && !empty($field)){	
@@ -86,25 +84,25 @@ if(!empty($op) && !empty($field)){
 		if(!is_string($value)){
 			$value = $value[0];
 		}
-		// http://localhost/ltw/api/searchInvoicesByField.php?op=equal&field=InvoiceNo&value=FT%20SEQ/5
+		// http://localhost/ltw/api/searchInvoicesByField.php?op=equal&field=InvoiceNo&value[]=FT%20SEQ/5
 		if(strcmp($field,"InvoiceNo")==0){
 			$list=getFormattedInvoices($query.' AND fatura.InvoiceNo = \''.$value.'\' GROUP by fatura.InvoiceNo');
 			echo json_encode($list);
 		}
 		
-		// http://localhost/ltw/api/searchInvoicesByField.php?op=equal&field=InvoiceDate&value=2013-06-27
+		// http://localhost/ltw/api/searchInvoicesByField.php?op=equal&field=InvoiceDate&value[]=2013-06-27
 		else if(strcmp($field,"InvoiceDate")==0){
 			$list=getFormattedInvoices($query.' AND fatura.InvoiceDate = \''.$value.'\' GROUP by fatura.InvoiceNo');
 			echo json_encode($list);
 		}
 		
-		// http://localhost/ltw/api/searchInvoicesByField.php?op=equal&field=GrossTotal&value=3690
+		// http://localhost/ltw/api/searchInvoicesByField.php?op=equal&field=GrossTotal&value[]=3690
 		else if(strcmp($field,"GrossTotal")==0){	
 			$list=getFormattedInvoices($query.' AND fatura.GrossTotal = \''.$value.'\' GROUP by fatura.InvoiceNo');
 			echo json_encode($list);
 		}
 		
-		// http://localhost/ltw/api/searchInvoicesByField.php?op=equal&field=CompanyName&value=companyname5
+		// http://localhost/ltw/api/searchInvoicesByField.php?op=equal&field=CompanyName&value[]=companyname5
 		else if(strcmp($field,"CompanyName")==0){
 			$list=getFormattedInvoices($query.' AND cliente.CompanyName = \''.$value.'\' GROUP by fatura.InvoiceNo');
 			echo json_encode($list);
@@ -117,26 +115,26 @@ if(!empty($op) && !empty($field)){
 		if(!is_string($value)){
 			$value = $value[0];
 		}
-		// http://localhost/ltw/api/searchInvoicesByField.php?op=contains&field=InvoiceNo&value=FT%20SE
+		// http://localhost/ltw/api/searchInvoicesByField.php?op=contains&field=InvoiceNo&value[]=FT%20SE
 		if(strcmp($field,"InvoiceNo")==0){
 			$list=getFormattedInvoices($query.' AND fatura.InvoiceNo LIKE \'%'.$value.'%\' GROUP by fatura.InvoiceNo');
 			echo json_encode($list);
 		}
 		
-		// http://localhost/ltw/api/searchInvoicesByField.php?op=contains&field=InvoiceDate&value=2013
+		// http://localhost/ltw/api/searchInvoicesByField.php?op=contains&field=InvoiceDate&value[]=2013
 		else if(strcmp($field,"InvoiceDate")==0){
 			$list=getFormattedInvoices($query.' AND fatura.InvoiceDate LIKE \'%'.$value.'%\' GROUP by fatura.InvoiceNo');
 			echo json_encode($list);
 		}
 		
-		// http://localhost/ltw/api/searchInvoicesByField.php?op=contains&field=GrossTotal&value=3690
+		// http://localhost/ltw/api/searchInvoicesByField.php?op=contains&field=GrossTotal&value[]=3690
 		else if(strcmp($field,"GrossTotal")==0){	
 			$list=getFormattedInvoices($query.' AND fatura.GrossTotal LIKE \'%'.$value.'%\' GROUP by fatura.InvoiceNo');
 			echo json_encode($list);
 			
 		}
 		
-		// http://localhost/ltw/api/searchInvoicesByField.php?op=contains&field=CompanyName&value=companyname5
+		// http://localhost/ltw/api/searchInvoicesByField.php?op=contains&field=CompanyName&value[]=companyname5
 		else if(strcmp($field,"CompanyName")==0){
 			$list=getFormattedInvoices($query.' AND cliente.CompanyName LIKE \'%'.$value.'%\' GROUP by fatura.InvoiceNo');
 			echo json_encode($list);
@@ -146,9 +144,7 @@ if(!empty($op) && !empty($field)){
 	// MIN OPERATION
 	else if($op == "min")
 		{
-		if(!is_string($value)){
-			$value = $value[0];
-		}
+		
 		// http://localhost/ltw/api/searchInvoicesByField.php?op=min&field=InvoiceNo
 		if(strcmp($field,"InvoiceNo")==0){
 			

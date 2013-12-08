@@ -14,7 +14,7 @@ if(!is_string($value) && $op!="range")
 }
 		
 $error = 0;
-$list = array(); //VER SE DA PARA TIRAR
+$list = array(); 
 
 if(!empty($op) && !empty($field)){	
 
@@ -52,7 +52,7 @@ if(!empty($op) && !empty($field)){
 	// EQUAL OPERATION
 	else if($op == "equal")
 	{
-		// http://localhost/ltw/api/searchProductsByField.php?op=equal&field=ProductCode&value=5
+		// http://localhost/ltw/api/searchProductsByField.php?op=equal&field=ProductCode&value[]=5
 		if(strcmp($field,"ProductCode")==0){
 			$query = 'SELECT ProductCode, unitPrice, ProductDescription FROM produto WHERE ProductCode = '.$value;
 			$rows = $db->query($query);
@@ -62,7 +62,7 @@ if(!empty($op) && !empty($field)){
 			echo json_encode($list);
 		}
 		
-		// http://localhost/ltw/api/searchProductsByField.php?op=equal&field=unitPrice&value=32.5
+		// http://localhost/ltw/api/searchProductsByField.php?op=equal&field=unitPrice&value[]=32.5
 		else if(strcmp($field,"unitPrice")==0){
 			$query = 'SELECT ProductCode, unitPrice, ProductDescription FROM produto WHERE unitPrice = '.$value;
 			$rows = $db->query($query);
@@ -72,7 +72,7 @@ if(!empty($op) && !empty($field)){
 			echo json_encode($list);
 		}
 		
-		// http://localhost/ltw/api/searchProductsByField.php?op=equal&field=ProductDescription&value=produto19
+		// http://localhost/ltw/api/searchProductsByField.php?op=equal&field=ProductDescription&value[]=produto19
 		else if(strcmp($field,"ProductDescription")==0){	
 			$query = 'SELECT ProductCode, unitPrice, ProductDescription FROM produto WHERE ProductDescription = \''.$value.'\'';
 			$rows = $db->query($query);
@@ -88,7 +88,7 @@ if(!empty($op) && !empty($field)){
 	// CONTAINS OPERATION
 	else if($op == "contains")
 	{
-		// localhost/ltw/api/searchProductsByField.php?op=contains&field=ProductCode&value=9
+		// localhost/ltw/api/searchProductsByField.php?op=contains&field=ProductCode&value[]=9
 		if(strcmp($field,"ProductCode")==0){
 			$query = 'SELECT ProductCode, unitPrice, ProductDescription FROM produto WHERE ProductCode LIKE \'%'.$value.'%\'';
 			$rows = $db->query($query);
@@ -98,7 +98,7 @@ if(!empty($op) && !empty($field)){
 			echo json_encode($list);
 		}
 		
-		// http://localhost/ltw/api/searchProductsByField.php?op=contains&field=unitPrice&value=3
+		// http://localhost/ltw/api/searchProductsByField.php?op=contains&field=unitPrice&value[]=3
 		else if(strcmp($field,"unitPrice")==0){
 			$query = 'SELECT ProductCode, unitPrice, ProductDescription FROM produto WHERE unitPrice LIKE \'%'.$value.'%\'';
 			$rows = $db->query($query);
@@ -108,7 +108,7 @@ if(!empty($op) && !empty($field)){
 			echo json_encode($list);
 		}
 		
-		// http://localhost/ltw/api/searchProductsByField.php?op=contains&field=ProductDescription&value=9
+		// http://localhost/ltw/api/searchProductsByField.php?op=contains&field=ProductDescription&value[]=9
 		else if(strcmp($field,"ProductDescription")==0){	
 			$query = 'SELECT ProductCode, unitPrice, ProductDescription FROM produto WHERE ProductDescription LIKE \'%'.$value.'%\'';
 			$rows = $db->query($query);

@@ -166,7 +166,7 @@ $(document).ready(function() {
 						$.each(data, function(i, item) {
 							$('div.sums').remove();
 							if($option!='api/getCustomer.php' && $option!='api/getProduct.php'){
-								if(!data[i].hasOwnProperty('InvoiceNo')){
+								if(!data.hasOwnProperty('InvoiceNo')){
 									if($option == 'api/getInvoice.php')									{
 										//$content.append('<div class="sums">'+data[i].reason+'</div>');
 									}
@@ -174,14 +174,14 @@ $(document).ready(function() {
 								}
 								
 								else{
-									$.each(data[i], function(i, doc){ $gt = doc.GrossTotal });
-									$invno = '<tr><td>InvoiceNo</td><td>' + data[i].InvoiceNo + '</td></tr>';
-									$invdate = '<tr><td>InvoiceDate</td><td>' + data[i].InvoiceDate + '</td></tr>';
-									$cmpname = '<tr><td>CompanyName</td><td>' + data[i].CompanyName  + '</td></tr>';
-									$grosstotal = '<tr><td>GrossTotal</td><td>' + $gt + '</td></tr>';
+									//$.each(data[i], function(i, doc){ $gt = doc.GrossTotal });
+									$invno = '<tr><td>InvoiceNo</td><td>' + data.InvoiceNo + '</td></tr>';
+									$invdate = '<tr><td>InvoiceDate</td><td>' + data.InvoiceDate + '</td></tr>';
+									$cmpname = '<tr><td>CompanyName</td><td>' + data.CompanyName  + '</td></tr>';
+									$grosstotal = '<tr><td>GrossTotal</td><td>' + data.DocumentTotals.GrossTotal + '</td></tr></table></td></tr>';
 									$json = '<div class="sums"><table border="1"><th colspan="2"><div class="open_invoice"><a href="">Abrir Detalhes</a></div></th>'+$invno+$invdate+$cmpname+$grosstotal+'</table></div>';
 									$content.append($json);
-									$(".open_invoice a[href=\"\"]").prop("href", "open.php?type=fatura&id="+data[i].InvoiceNo);
+									$(".open_invoice a[href=\"\"]").prop("href", "open.php?type=fatura&id="+data.InvoiceNo);
 								}	
 							}
 							else if($option=='api/getCustomer.php'){
@@ -241,11 +241,11 @@ function getJSON(){
 		
 		$.each(data, function(i, item) {
 			if(data[i].hasOwnProperty('InvoiceNo')){
-				$.each(data[i], function(i, doc){ $gt = doc.GrossTotal });
+				//$.each(data[i], function(i, doc){ $gt = doc.GrossTotal });
 				$invno = '<tr><td>InvoiceNo</td><td>' + data[i].InvoiceNo + '</td></tr>';
 				$invdate = '<tr><td>InvoiceDate</td><td>' + data[i].InvoiceDate + '</td></tr>';
 				$cmpname = '<tr><td>CompanyName</td><td>' + data[i].CompanyName  + '</td></tr>';
-				$grosstotal = '<tr><td>GrossTotal</td><td>' + $gt + '</td></tr>';
+				$grosstotal = '<tr><td>GrossTotal</td><td>' + data[i].DocumentTotals.GrossTotal + '</td></tr></table></td></tr>';
 				$json = '<div class="sums"><table border="1"><th colspan="2"><div class="open_invoice"><a href="">Abrir Detalhes</a></div></th>'+$invno+$invdate+$cmpname+$grosstotal+'</table></div>';
 				$content.append($json);
 				$(".open_invoice a[href=\"\"]").prop("href", "open.php?type=fatura&id="+data[i].InvoiceNo);

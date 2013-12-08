@@ -15,7 +15,7 @@ if(!is_string($value) && $op!="range")
 	$value = $value[0];
 		}
 $error = 0;
-$list = array(); //VER SE DA PARA TIRAR
+$list = array(); 
 
 if(!empty($op) && !empty($field)){	
 
@@ -55,7 +55,7 @@ if(!empty($op) && !empty($field)){
 	{
 		
 		
-		// http://localhost/ltw/api/searchCustomersByField.php?op=equal&field=CustomerID&value=5
+		// http://localhost/ltw/api/searchCustomersByField.php?op=equal&field=CustomerID&value[]=5
 		if(strcmp($field,"CustomerID")==0){
 			$query = 'SELECT CustomerID, CustomerTaxID, CompanyName FROM cliente WHERE CustomerID = '.$value;
 			$rows = $db->query($query);
@@ -65,7 +65,7 @@ if(!empty($op) && !empty($field)){
 			echo json_encode($list);
 		}
 		
-		// http://localhost/ltw/api/searchCustomersByField.php?op=equal&field=CustomerTaxID&value=74
+		// http://localhost/ltw/api/searchCustomersByField.php?op=equal&field=CustomerTaxID&value[]=74
 		else if(strcmp($field,"CustomerTaxID")==0){
 			$query = 'SELECT CustomerID, CustomerTaxID, CompanyName FROM cliente WHERE CustomerTaxID = '.$value;
 			$rows = $db->query($query);
@@ -75,7 +75,7 @@ if(!empty($op) && !empty($field)){
 			echo json_encode($list);
 		}
 		
-		// http://localhost/ltw/api/searchCustomersByField.php?op=equal&field=CompanyName&value=companyname2
+		// http://localhost/ltw/api/searchCustomersByField.php?op=equal&field=CompanyName&value[]=companyname2
 		else if(strcmp($field,"CompanyName")==0){	
 			$query = 'SELECT CustomerID, CustomerTaxID, CompanyName FROM cliente WHERE CompanyName = \''.$value.'\'';
 			$rows = $db->query($query);
@@ -91,7 +91,7 @@ if(!empty($op) && !empty($field)){
 	// CONTAINS OPERATION
 	else if($op == "contains")
 	{
-		// localhost/ltw/api/searchCustomersByField.php?op=contains&field=CustomerID&value=9
+		// localhost/ltw/api/searchCustomersByField.php?op=contains&field=CustomerID&value[]=9
 		if(strcmp($field,"CustomerID")==0){
 			$query = 'SELECT CustomerID, CustomerTaxID, CompanyName FROM cliente WHERE CustomerID LIKE \'%'.$value.'%\'';
 			$rows = $db->query($query);
@@ -101,7 +101,7 @@ if(!empty($op) && !empty($field)){
 			echo json_encode($list);
 		}
 		
-		// http://localhost/ltw/api/searchCustomersByField.php?op=contains&field=CustomerTaxID&value=3
+		// http://localhost/ltw/api/searchCustomersByField.php?op=contains&field=CustomerTaxID&value[]=3
 		else if(strcmp($field,"CustomerTaxID")==0){
 			$query = 'SELECT CustomerID, CustomerTaxID, CompanyName FROM cliente WHERE CustomerTaxID LIKE \'%'.$value.'%\'';
 			$rows = $db->query($query);
@@ -111,7 +111,7 @@ if(!empty($op) && !empty($field)){
 			echo json_encode($list);
 		}
 		
-		// http://localhost/ltw/api/searchCustomersByField.php?op=contains&field=CompanyName&value=3690
+		// http://localhost/ltw/api/searchCustomersByField.php?op=contains&field=CompanyName&value[]=company
 		else if(strcmp($field,"CompanyName")==0){	
 			$query = 'SELECT CustomerID, CustomerTaxID, CompanyName FROM cliente WHERE CompanyName LIKE \'%'.$value.'%\'';
 			$rows = $db->query($query);

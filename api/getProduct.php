@@ -1,11 +1,12 @@
 
 <?php
-
-header('Content-Type:application/json');
+function getProduct($ProductCode){
+//header('Content-Type:application/json');
 $db = new PDO('sqlite:../data/database.db');
-
-
-$value = str_replace("\"","",$_GET['ProductCode']);
+if(isset($_GET['ProductCode']))
+	$value = str_replace("\"","",$_GET['ProductCode']);
+else
+	$value = $ProductCode;
 
 // http://localhost/ltw/api/searchProduct.php?ProductCode=5
 if(!empty($value)){
@@ -18,12 +19,15 @@ if(!empty($value)){
 						  'unitofMeasure' => $row['unitofMeasure']);
 	}
 
-
 $error = array('error' => array('code' => 404, 'reason' => 'Product not found.'));
 
 if(empty($product))
-	echo json_encode($error);
+	return json_encode($error);
 else
-	echo json_encode($product);
+	return json_encode($product);
+	}
 }
+
+if(isset($_GET['ProductCode']))
+	echo getProduct(null);
 ?>
